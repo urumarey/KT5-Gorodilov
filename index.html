@@ -1,0 +1,54 @@
+<html>
+  <body>
+    <form name="person" onSubmit = f()>
+      Заказ: <input type = "text" name="zakaz"><br><br>
+      Категория: <select name= "categorya" size= "1" ><br>
+        <option selected value= "inventar - sportivnye igry" >спорт</option>
+        <option value= "inventar - beg" >бег</option>
+        <option value= "inventar - plavanie" > плавание</option>
+        <option value= "inventar - gimnastika" >Инвентарь для спортивной гимнастики</option>
+        <option value= "inventar - tyrizm" >туризм</option>
+      </select><br><br>
+      Товар: <select name= "tovar" size= "1"><br>
+        <option value= "fytbolniy myach">Футбольный мяч</option>
+        <option value= "shorty dlya bega">Шорты </option>
+        <option value= "shapka" >Шапочка резиновая</option>
+        <option value= "raketka dlya tennisa">Ракетки для тенниса</option>
+        <option value= "shater dlya tyrizma">Шатер для туризма</option>
+        <option value= "brysya gimnasticheskie" selected>Брусья гимнастические</option>
+      </select><br><br>
+      Количество: <input type = "text" name="kolvo"><br><br>
+ 
+      ФИО: <input type = "text" name="fio"><br><br>
+      Телефон: <input type = "text" name="tel"><br><br>
+      Адрес: <input type = "text" name="adress"><br><br>
+      
+      <b>Способ оплаты:</b>
+      <br><input type= "radio" name = "oplata" id= "oplata" value= "Nalichnye">Наличные<br>
+      <input type= "radio" name="oplata" id= "oplata" value= "Beznalichnye" checked>Безналичные<br><br>
+      <br><b>Способ доставки:</b>
+      <br><input type= "radio" name = "dostavka" id= "dostavka" value= "Samovyvoz">Самовывоз<br>
+      <input type= "radio" name="dostavka" id= "dostavka" value= "Kyrier" checked>Курьер<br>
+      <br><br><input type = "submit" value = "Сохранить">
+    </form>
+    <script>
+      function f(){
+          zakaz = person.zakaz.value
+          categorya = person.categorya.value
+          tovar = person.tovar.value
+          kolvo = person.kolvo.value
+          fio = person.fio.value
+          tel = person.tel.value
+          adress = person.adress.value
+          oplata = document.getElementById('oplata').value
+          dostavka = document.getElementById('dostavka').value
+          S = "<table border=1><tr><th>Zakaz</th><th>Categorya</th><th>Tovar</th><th>Kolvo</th><th>FIO</th><th>Telephone</th><th>Adres</th><th>Sposob_oplaty</th><th>Sposob_dostavki</th></tr>"
+          S+="<tr><td>"+zakaz+"</td><td>"+categorya+"</td><td>"+tovar+"</td><td>"+kolvo+"</td><td>"+fio+"</td><td>"+tel+"</td><td>"+adress+"</td><td>"+oplata+"</td><td>"+dostavka+"</td></tr></table>"
+          data = "Zakaz, Categorya, Tovar, Kolvo, FIO, Telephone, Adres, Sposob_oplaty, Sposob_dostavki\n"
+          data+=zakaz+","+categorya+","+tovar+","+kolvo+","+fio+","+tel+","+adress+","+oplata+","+dostavka+""
+          window.open('data:text/csv;charset=utf-8,'+escape(data));
+          document.write(S)
+      }
+    </script>
+  </body>
+</html>
